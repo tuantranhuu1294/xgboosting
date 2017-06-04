@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) Viettel Cyberspace - All Rights Reserved
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  ~ Written by Tran Huu Tuan<tuantranhuu1294@gmail.com>, Jun 2017
+  -->
+
+<Configuration monitorinterval="30" status="info" strict="true">
+    <Properties>
+        <Property name="filename">logs/vtcc-xgboost.log</Property>
+    </Properties>
+    <Appenders>
+        <Appender type="Console" name="Console">
+            <Layout type="PatternLayout" pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c - %msg%n"/>
+        </Appender>
+        <Appender type="Console" name="FLOW">
+            <Layout type="PatternLayout" pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c - %msg%n"/>
+        </Appender>
+        <Appender type="File" name="File" fileName="${filename}">
+            <Layout type="PatternLayout" pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c - %msg%n"/>
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="Console"/>
+            <!-- Use FLOW to trace down exact method sending the msg -->
+            <!-- <AppenderRef ref="FLOW" /> -->
+        </Root>
+
+        <Logger name="vn.viettel.xgboost" level="debug" additivity="false">
+            <appender-ref ref="File"/>
+            <appender-ref ref="Console"/>
+        </Logger>
+
+        <Logger name="org.jboss" level="off" additivity="false">
+        </Logger>
+
+        <Logger name="org.xnio" level="off" additivity="false">
+        </Logger>
+
+        <Logger name="io.undertow" level="off" additivity="false">
+        </Logger>
+
+        <Logger name="org.jooq" level="off" additivity="false">
+        </Logger>
+
+    </Loggers>
+</Configuration>
